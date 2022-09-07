@@ -1,39 +1,35 @@
-﻿using Domain;
-using Infrastructure.Data.Repositories.Interface;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿
 
-namespace Infrastructure.Data.Repositories
+using Product.Api.Data;
+
+namespace Product.Api.Services
 {
-    public class ProductRepository : IProductRepository
+    public class ProductService : IProductService
     {
         private readonly DbContextClass _dbContext;
 
-        public ProductRepository(DbContextClass dbContext)
+        public ProductService(DbContextClass dbContext)
         {
             _dbContext = dbContext;
         }
 
-        public IEnumerable<Product> GetProductList()
+        public IEnumerable<Models.Product> GetProductList()
         {
             return _dbContext.Products.ToList();
         }
-        public Product GetProductById(int id)
+        public Models.Product GetProductById(int id)
         {
             return _dbContext.Products.Where(x => x.Id == id).FirstOrDefault();
         }
 
-        public Product AddProduct(Product product)
+        public Models.Product AddProduct(Models.Product product)
         {
             var result = _dbContext.Products.Add(product);
             _dbContext.SaveChanges();
             return result.Entity;
         }
 
-        public Product UpdateProduct(Product product)
+        public Models.Product UpdateProduct(Models.Product product)
         {
             var result = _dbContext.Products.Update(product);
             _dbContext.SaveChanges();

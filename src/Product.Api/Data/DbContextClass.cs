@@ -1,10 +1,10 @@
-﻿using Domain;
+﻿
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 
-namespace Infrastructure.Data
+namespace Product.Api.Data
 {
-    public class DbContextClass : DbContext
+	public class DbContextClass : DbContext
     {
         protected readonly IConfiguration Configuration;
 
@@ -17,6 +17,6 @@ namespace Infrastructure.Data
             options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection"));
         }
 
-        public DbSet<Product> Products { get; set; }
+        public DbSet<Models.Product> Products { get; set; }
     }
 }

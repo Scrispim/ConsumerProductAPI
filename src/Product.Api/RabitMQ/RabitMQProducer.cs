@@ -1,9 +1,8 @@
-﻿using Infrastructure.Subscribers.Interface;
-using Newtonsoft.Json;
+﻿using Newtonsoft.Json;
 using RabbitMQ.Client;
 using System.Text;
 
-namespace Infrastructure.Subscribers
+namespace Product.Api.RabitMQ
 {
     public class RabitMQProducer : IRabitMQProducer
     {
